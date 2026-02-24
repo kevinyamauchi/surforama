@@ -85,48 +85,16 @@ nav:
   - 'Overview': index.md
   - 'Getting started': getting_started.md
   - 'Installation': installation.md
-  - 'CZ cryoET Data Portal': surforama_for_data_portal.md
+  - 'CZ cryoET Data Portal example': surforama_for_data_portal.md
+  - 'Tips and tricks': usage_tips.md
   - 'Contributing': contributing.md
 
 plugins:
   - search
-  - mkdocstrings:
-      handlers:
-        python:
-          import:
-            - https://docs.python.org/3/objects.inv
-          selection:
-            docstring_style: numpy
-            filters: [ "!^_" ]
-          rendering:
-            show_root_heading: true
-            show_root_toc_entry: true
-            show_root_full_path: true
-            show_object_full_path: false
-            # show_root_members_full_path: false
-            # show_category_heading: false
-            show_if_no_docstring: false
-            # show_signature: true
-            show_signature_annotations: true
-            show_source: true
-            # show_bases: true
-            # group_by_category: true
-            # heading_level: 2
-            members_order: source  # alphabetical/source
-
-            ## experimental
-            docstring_section_style: spacy  # or table/list/spacy
   - mkdocs-video:
       is_video: True
       video_autoplay: True
       video_loop: True
-#  - gallery:
-#      conf_script: docs/gallery_conf.py
-#      examples_dirs: [docs/examples]
-#      gallery_dirs: [docs/generated/gallery]
-#      filename_pattern: /*.py  # which scripts will be executed for the docs
-#      ignore_pattern: /__init__.py  # ignore these example files completely
-#      run_stale_examples: True
 
 extra_css:
   - stylesheets/extra.css
