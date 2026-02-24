@@ -1,7 +1,84 @@
 [build-system]
-requires = ["setuptools>=42.0.0", "wheel"]
+requires = ["setuptools>=64", "setuptools_scm[toml]>=8"]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "surforama"
+dynamic = ["version"]
+description = "a tool for using surfaces to explore volumetric data in napari"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Kyle Harrington", email = "surforama@kyleharrington.com" },
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Framework :: napari",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Image Processing",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "magicgui",
+    "mrcfile",
+    "numpy",
+    "pooch",
+    "qtpy",
+    "pyacvd",
+    "pyvista",
+    "rich",
+    "scikit-image",
+    "starfile",
+    "trimesh",
+    "typer",
+]
+
+[project.urls]
+"Bug Tracker"   = "https://github.com/cellcanvas/surforama/issues"
+"Documentation" = "https://github.com/cellcanvas/surforama#README.md"
+"Source Code"   = "https://github.com/cellcanvas/surforama"
+"User Support"  = "https://github.com/cellcanvas/surforama/issues"
+
+[project.scripts]
+surforama = "surforama._cli:app"
+
+[project.entry-points."napari.manifest"]
+surforama = "surforama:napari.yaml"
+
+[project.optional-dependencies]
+testing = [
+    "napari",
+    "pyqt5",
+    "pytest",
+    "pytest-cov",
+    "pytest-qt",
+    "tox",
+]
+docs = [
+    "mkdocs<2",
+    "mkdocs-material",
+    "mkdocstrings[python]",
+    "mkdocs-video",
+]
+napari = ["napari[all]"]
+dev = [
+    "surforama[testing,docs]",
+    "pre-commit",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml"]
 
 [tool.setuptools_scm]
 write_to = "src/surforama/_version.py"
