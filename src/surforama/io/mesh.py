@@ -66,7 +66,6 @@ def convert_mask_to_mesh(
     # remesh to desired point size
     cluster_points = int(surf.area / barycentric_area)
     clus = pyacvd.Clustering(surf)
-    clus.subdivide(3)
     clus.cluster(cluster_points)
     remesh = clus.create_mesh()
 
